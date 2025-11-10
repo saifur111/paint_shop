@@ -1,15 +1,1264 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ColorCraft Painting Shop - Professional Painting Services</title>
-  <meta name="description" content="Professional painting services for homes and businesses — interior, exterior, and custom designs. Transform your space with ColorCraft Painting Shop.">
-  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/295/295128.png">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Riyadh Royal Painting — Transform Your Space with Excellence</title>
+  <meta name="description" content="At Riyadh Royal Painting, we bring elegance, durability, and creativity to every project. Professional painting services in Riyadh with advanced visualization and expert craftsmanship." />
+  <meta property="og:title" content="Riyadh Royal Painting — Expert Painting Services in Riyadh" />
+  <meta property="og:description" content="Bringing elegance, durability, and creativity to every project in Riyadh, Saudi Arabia." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=1200&h=630&fit=crop" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=32&h=32&fit=crop" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-  <div id="app"></div>
+  <!-- Scroll Progress Bar -->
+  <div id="scrollProgress" class="scroll-progress"></div>
+
+  <!-- Loading Screen -->
+  <div id="preloader" class="preloader">
+    <div class="paint-loader">
+      <div class="paint-brush"></div>
+      <div class="paint-trail"></div>
+    </div>
+    <p class="loading-text">Loading Excellence...</p>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#home" class="brand">
+        <span class="brand-icon">👑</span>
+        <span class="brand-text">Riyadh Royal Painting</span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#gallery" class="nav-link">Gallery</a>
+        <a href="#reviews" class="nav-link">Reviews</a>
+        <a href="#calculator" class="nav-link">Estimate</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <span class="theme-icon">🌙</span>
+        </button>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-background"></div>
+      <div class="container hero-content">
+        <div class="hero-badge" data-aos="fade-down">
+          <span>👑 مرحباً بكم — Welcome to Royal Excellence</span>
+        </div>
+        <h1 class="hero-title" data-aos="fade-up">
+          Transform Your Riyadh Space<br/>
+          <span class="gradient-text">With Royal Elegance</span>
+        </h1>
+        <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="100">
+          At Riyadh Royal Painting, we bring elegance, durability, and creativity to every project. Whether it's a home makeover or a commercial upgrade, our team delivers flawless finishes you can trust.
+        </p>
+        <div class="hero-buttons" data-aos="fade-up" data-aos-delay="200">
+          <a href="#contact" class="btn btn-primary btn-large">
+            Request Free Quote
+            <span class="btn-icon">→</span>
+          </a>
+          <a href="#visualizer" class="btn btn-secondary btn-large">
+            Try Color Visualizer
+            <span class="btn-icon">🎨</span>
+          </a>
+        </div>
+        <!-- Stats -->
+        <div class="hero-stats" data-aos="fade-up" data-aos-delay="300">
+          <div class="stat-card">
+            <div class="stat-number" data-count="1500">0</div>
+            <div class="stat-label">Projects Completed</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-count="98">0</div>
+            <div class="stat-label">% Satisfaction</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-count="15">0</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-indicator">
+        <div class="mouse"></div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section services-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-tag">Our Services</span>
+          <h2 class="section-title">Professional Painting Services</h2>
+          <p class="section-subtitle">From apartments to villas, offices to retail — we paint Riyadh beautifully</p>
+        </div>
+
+        <!-- Service Tabs -->
+        <div class="service-tabs" data-aos="fade-up" data-aos-delay="100">
+          <button class="service-tab active" data-tab="interior">
+            <span class="tab-icon">🏠</span>
+            <span>Interior</span>
+          </button>
+          <button class="service-tab" data-tab="exterior">
+            <span class="tab-icon">🌳</span>
+            <span>Exterior</span>
+          </button>
+          <button class="service-tab" data-tab="commercial">
+            <span class="tab-icon">🏢</span>
+            <span>Commercial</span>
+          </button>
+          <button class="service-tab" data-tab="specialty">
+            <span class="tab-icon">✨</span>
+            <span>Specialty</span>
+          </button>
+        </div>
+
+        <!-- Service Content -->
+        <div class="service-content">
+          <div class="service-panel active" data-panel="interior">
+            <div class="service-grid">
+              <div class="service-card" data-aos="fade-up">
+                <div class="service-icon">🏡</div>
+                <h3>Residential Painting</h3>
+                <p>From apartments to villas, we refresh interiors and exteriors with modern, durable finishes.</p>
+                <ul class="service-features">
+                  <li>✓ Apartments & Villas</li>
+                  <li>✓ Modern Durable Finishes</li>
+                  <li>✓ Professional Techniques</li>
+                  <li>✓ Premium Materials</li>
+                </ul>
+              </div>
+              <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-icon">🏢</div>
+                <h3>Commercial Painting</h3>
+                <p>Professional painting for offices, retail stores, and business spaces — boosting both appearance and value.</p>
+                <ul class="service-features">
+                  <li>✓ Office Buildings</li>
+                  <li>✓ Retail Spaces</li>
+                  <li>✓ Minimal Disruption</li>
+                  <li>✓ Fast Turnaround</li>
+                </ul>
+              </div>
+              <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-icon">🎨</div>
+                <h3>Interior Painting</h3>
+                <p>Smooth finishes, creative wall accents, and custom color designs for every room.</p>
+                <ul class="service-features">
+                  <li>✓ Smooth Finishes</li>
+                  <li>✓ Creative Accents</li>
+                  <li>✓ Custom Colors</li>
+                  <li>✓ Every Room</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="service-panel" data-panel="exterior">
+            <div class="service-grid">
+              <div class="service-card" data-aos="fade-up">
+                <div class="service-icon">🏠</div>
+                <h3>Exterior Painting</h3>
+                <p>Weather-resistant coatings and premium paints to protect and beautify your property.</p>
+                <ul class="service-features">
+                  <li>✓ Weather Resistant</li>
+                  <li>✓ Premium Paints</li>
+                  <li>✓ Property Protection</li>
+                  <li>✓ Beautiful Results</li>
+                </ul>
+              </div>
+              <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-icon">✨</div>
+                <h3>Decorative & Custom Designs</h3>
+                <p>Feature walls, textured finishes, and personalized styles that make your space stand out.</p>
+                <ul class="service-features">
+                  <li>✓ Feature Walls</li>
+                  <li>✓ Textured Finishes</li>
+                  <li>✓ Personalized Styles</li>
+                  <li>✓ Unique Spaces</li>
+                </ul>
+              </div>
+              <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-icon">👑</div>
+                <h3>Premium Quality</h3>
+                <p>We pride ourselves on reliability, clean results, and transparent pricing throughout Riyadh.</p>
+                <ul class="service-features">
+                  <li>✓ On-Time Delivery</li>
+                  <li>✓ Clean & Precise</li>
+                  <li>✓ Long-Lasting</li>
+                  <li>✓ Transparent Pricing</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="service-panel" data-panel="commercial">
+            <div class="service-grid">
+              <div class="service-card" data-aos="fade-up">
+                <div class="service-icon">🏢</div>
+                <h3>Office Buildings</h3>
+                <p>Professional painting for commercial properties with minimal business disruption.</p>
+                <ul class="service-features">
+                  <li>✓ After-hours service</li>
+                  <li>✓ Large-scale projects</li>
+                  <li>✓ Safety compliance</li>
+                  <li>✓ Fast completion</li>
+                </ul>
+              </div>
+              <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-icon">🏪</div>
+                <h3>Retail Spaces</h3>
+                <p>Create inviting retail environments that attract customers and boost sales.</p>
+                <ul class="service-features">
+                  <li>✓ Brand color matching</li>
+                  <li>✓ Quick turnaround</li>
+                  <li>✓ Flexible scheduling</li>
+                  <li>✓ Touch-up service</li>
+                </ul>
+              </div>
+              <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-icon">🏭</div>
+                <h3>Industrial</h3>
+                <p>Heavy-duty coatings for warehouses, factories, and industrial facilities.</p>
+                <ul class="service-features">
+                  <li>✓ Epoxy flooring</li>
+                  <li>✓ Anti-slip coatings</li>
+                  <li>✓ Chemical resistant</li>
+                  <li>✓ Safety markings</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="service-panel" data-panel="specialty">
+            <div class="service-grid">
+              <div class="service-card" data-aos="fade-up">
+                <div class="service-icon">🎭</div>
+                <h3>Faux Finishes</h3>
+                <p>Artistic techniques creating marble, wood grain, and decorative effects.</p>
+                <ul class="service-features">
+                  <li>✓ Venetian plaster</li>
+                  <li>✓ Metallic finishes</li>
+                  <li>✓ Texture creation</li>
+                  <li>✓ Custom designs</li>
+                </ul>
+              </div>
+              <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-icon">🖌️</div>
+                <h3>Murals & Art</h3>
+                <p>Custom murals and artistic wall treatments that make spaces truly unique.</p>
+                <ul class="service-features">
+                  <li>✓ Custom design</li>
+                  <li>✓ Hand-painted art</li>
+                  <li>✓ All sizes</li>
+                  <li>✓ Indoor & outdoor</li>
+                </ul>
+              </div>
+              <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-icon">🏛️</div>
+                <h3>Restoration</h3>
+                <p>Historic preservation and restoration painting for period properties.</p>
+                <ul class="service-features">
+                  <li>✓ Period accuracy</li>
+                  <li>✓ Gentle techniques</li>
+                  <li>✓ Historic colors</li>
+                  <li>✓ Expert care</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service Comparison Chart -->
+        <div class="comparison-chart" data-aos="fade-up">
+          <h3 class="chart-title">Service Comparison</h3>
+          <div class="chart-table">
+            <div class="chart-header">
+              <div class="chart-cell">Feature</div>
+              <div class="chart-cell">Standard</div>
+              <div class="chart-cell">Premium</div>
+              <div class="chart-cell">Deluxe</div>
+            </div>
+            <div class="chart-row">
+              <div class="chart-cell">Color Consultation</div>
+              <div class="chart-cell">✓</div>
+              <div class="chart-cell">✓</div>
+              <div class="chart-cell">✓</div>
+            </div>
+            <div class="chart-row">
+              <div class="chart-cell">Premium Paint</div>
+              <div class="chart-cell">—</div>
+              <div class="chart-cell">✓</div>
+              <div class="chart-cell">✓</div>
+            </div>
+            <div class="chart-row">
+              <div class="chart-cell">Warranty</div>
+              <div class="chart-cell">1 year</div>
+              <div class="chart-cell">3 years</div>
+              <div class="chart-cell">5 years</div>
+            </div>
+            <div class="chart-row">
+              <div class="chart-cell">Touch-up Service</div>
+              <div class="chart-cell">—</div>
+              <div class="chart-cell">—</div>
+              <div class="chart-cell">✓</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Showcase -->
+    <section id="projects" class="section projects-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-tag">Gallery</span>
+          <h2 class="section-title">See the Difference We Make</h2>
+          <p class="section-subtitle">Real transformations across Riyadh — before and after</p>
+        </div>
+
+        <div class="projects-carousel" data-aos="fade-up" data-aos-delay="100">
+          <button class="carousel-btn carousel-prev" id="projectPrev">
+            <span>←</span>
+          </button>
+          <div class="carousel-track-container">
+            <div class="carousel-track" id="projectsTrack">
+              <div class="project-slide">
+                <div class="project-card">
+                  <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&h=600&fit=crop" alt="Modern Living Room" loading="lazy">
+                    <div class="project-badge">Interior</div>
+                  </div>
+                  <div class="project-info">
+                    <h3>Modern Living Room</h3>
+                    <p>Complete interior transformation with custom accent wall and premium finishes.</p>
+                    <div class="project-meta">
+                      <span><strong>Type:</strong> Residential</span>
+                      <span><strong>Duration:</strong> 3 days</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-slide">
+                <div class="project-card">
+                  <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1560184897-ae75f418493e?w=800&h=600&fit=crop" alt="Victorian Home Exterior" loading="lazy">
+                    <div class="project-badge">Exterior</div>
+                  </div>
+                  <div class="project-info">
+                    <h3>Victorian Home Exterior</h3>
+                    <p>Historic home restoration with period-accurate colors and meticulous detail work.</p>
+                    <div class="project-meta">
+                      <span><strong>Type:</strong> Restoration</span>
+                      <span><strong>Duration:</strong> 2 weeks</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-slide">
+                <div class="project-card">
+                  <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop" alt="Corporate Office" loading="lazy">
+                    <div class="project-badge">Commercial</div>
+                  </div>
+                  <div class="project-info">
+                    <h3>Corporate Office</h3>
+                    <p>Professional office painting with brand-matched colors and after-hours service.</p>
+                    <div class="project-meta">
+                      <span><strong>Type:</strong> Commercial</span>
+                      <span><strong>Duration:</strong> 1 week</strong></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-slide">
+                <div class="project-card">
+                  <div class="project-image">
+                    <img src="https://images.unsplash.com/photo-1556912167-f556f1f39faa?w=800&h=600&fit=crop" alt="Boutique Cafe" loading="lazy">
+                    <div class="project-badge">Specialty</div>
+                  </div>
+                  <div class="project-info">
+                    <h3>Boutique Cafe</h3>
+                    <p>Custom mural and decorative painting creating a unique atmosphere.</p>
+                    <div class="project-meta">
+                      <span><strong>Type:</strong> Commercial</span>
+                      <span><strong>Duration:</strong> 5 days</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button class="carousel-btn carousel-next" id="projectNext">
+            <span>→</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Before/After Gallery -->
+    <section id="gallery" class="section gallery-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-tag">Transformations</span>
+          <h2 class="section-title">Before & After Gallery</h2>
+          <p class="section-subtitle">See the dramatic difference professional painting makes</p>
+        </div>
+
+        <!-- Gallery Filters -->
+        <div class="gallery-filters" data-aos="fade-up" data-aos-delay="100">
+          <button class="filter-btn active" data-filter="all">All Projects</button>
+          <button class="filter-btn" data-filter="interior">Interior</button>
+          <button class="filter-btn" data-filter="exterior">Exterior</button>
+          <button class="filter-btn" data-filter="commercial">Commercial</button>
+        </div>
+
+        <!-- Before/After Comparison Tabs -->
+        <div class="ba-tabs" data-aos="fade-up" data-aos-delay="200">
+          <button class="ba-tab active" data-ba="1">Living Room</button>
+          <button class="ba-tab" data-ba="2">Kitchen</button>
+          <button class="ba-tab" data-ba="3">Exterior</button>
+        </div>
+
+        <!-- Before/After Comparisons -->
+        <div class="ba-container-wrapper">
+          <div class="ba-comparison active" data-ba-content="1">
+            <div class="ba-slider" id="baSlider1">
+              <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1200&h=600&fit=crop" alt="After" class="ba-after">
+              <div class="ba-before" style="width: 50%;">
+                <img src="https://images.unsplash.com/photo-1616594266375-95a36674e53e?w=1200&h=600&fit=crop" alt="Before" class="ba-before-img">
+              </div>
+              <div class="ba-handle" tabindex="0" role="slider" aria-label="Before after slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+                <div class="ba-handle-line"></div>
+                <div class="ba-handle-circle">
+                  <span>⇄</span>
+                </div>
+              </div>
+            </div>
+            <p class="ba-caption">Drag the handle or use arrow keys to compare. Modern living room transformation with custom accent wall.</p>
+          </div>
+
+          <div class="ba-comparison" data-ba-content="2">
+            <div class="ba-slider" id="baSlider2">
+              <img src="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?w=1200&h=600&fit=crop" alt="After" class="ba-after">
+              <div class="ba-before" style="width: 50%;">
+                <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=1200&h=600&fit=crop" alt="Before" class="ba-before-img">
+              </div>
+              <div class="ba-handle" tabindex="0" role="slider" aria-label="Before after slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+                <div class="ba-handle-line"></div>
+                <div class="ba-handle-circle">
+                  <span>⇄</span>
+                </div>
+              </div>
+            </div>
+            <p class="ba-caption">Kitchen cabinet refinishing with modern colors and professional spray finish.</p>
+          </div>
+
+          <div class="ba-comparison" data-ba-content="3">
+            <div class="ba-slider" id="baSlider3">
+              <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=1200&h=600&fit=crop" alt="After" class="ba-after">
+              <div class="ba-before" style="width: 50%;">
+                <img src="https://images.unsplash.com/photo-1572120360610-d971b9d7767c?w=1200&h=600&fit=crop" alt="Before" class="ba-before-img">
+              </div>
+              <div class="ba-handle" tabindex="0" role="slider" aria-label="Before after slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+                <div class="ba-handle-line"></div>
+                <div class="ba-handle-circle">
+                  <span>⇄</span>
+                </div>
+              </div>
+            </div>
+            <p class="ba-caption">Complete exterior transformation with weather-resistant premium paint.</p>
+          </div>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="gallery-grid" data-aos="fade-up" data-aos-delay="300">
+          <div class="gallery-item" data-category="interior">
+            <img src="https://images.unsplash.com/photo-1615873968403-89e068629265?w=600&h=400&fit=crop" alt="Interior Project" loading="lazy">
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Interior</span>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="exterior">
+            <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600&h=400&fit=crop" alt="Exterior Project" loading="lazy">
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Exterior</span>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="commercial">
+            <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=600&h=400&fit=crop" alt="Commercial Project" loading="lazy">
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Commercial</span>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="interior">
+            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&h=400&fit=crop" alt="Interior Project" loading="lazy">
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Interior</span>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="exterior">
+            <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&h=400&fit=crop" alt="Exterior Project" loading="lazy">
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Exterior</span>
+            </div>
+          </div>
+          <div class="gallery-item" data-category="commercial">
+            <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600&h=400&fit=crop" alt="Commercial Project" loading="lazy">
+            <div class="gallery-overlay">
+              <span class="gallery-tag">Commercial</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Color Visualizer -->
+    <section id="visualizer" class="section visualizer-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-tag">Try It Yourself</span>
+          <h2 class="section-title">Color Visualizer Tool</h2>
+          <p class="section-subtitle">See your dream colors before we paint — try our interactive tool</p>
+        </div>
+
+        <div class="visualizer-container" data-aos="fade-up" data-aos-delay="100">
+          <div class="visualizer-controls">
+            <div class="control-group">
+              <label class="control-label">Wall Color</label>
+              <div class="color-input-wrapper">
+                <input type="color" id="wallColor" value="#f5f5f5" class="color-input">
+                <span class="color-value" id="wallColorValue">#f5f5f5</span>
+              </div>
+              <!-- Popular Paint Swatches -->
+              <div class="color-swatches">
+                <button class="swatch" style="background: #FFFFFF" data-color="#FFFFFF" title="Pure White"></button>
+                <button class="swatch" style="background: #F5F5DC" data-color="#F5F5DC" title="Beige"></button>
+                <button class="swatch" style="background: #D3D3D3" data-color="#D3D3D3" title="Light Gray"></button>
+                <button class="swatch" style="background: #B0C4DE" data-color="#B0C4DE" title="Light Blue"></button>
+                <button class="swatch" style="background: #E6E6FA" data-color="#E6E6FA" title="Lavender"></button>
+                <button class="swatch" style="background: #98FB98" data-color="#98FB98" title="Pale Green"></button>
+                <button class="swatch" style="background: #FFE4B5" data-color="#FFE4B5" title="Moccasin"></button>
+                <button class="swatch" style="background: #FFB6C1" data-color="#FFB6C1" title="Light Pink"></button>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label">Accent Color</label>
+              <div class="color-input-wrapper">
+                <input type="color" id="accentColor" value="#3b82f6" class="color-input">
+                <span class="color-value" id="accentColorValue">#3b82f6</span>
+              </div>
+              <div class="color-swatches">
+                <button class="swatch" style="background: #3b82f6" data-color="#3b82f6" title="Blue"></button>
+                <button class="swatch" style="background: #10b981" data-color="#10b981" title="Green"></button>
+                <button class="swatch" style="background: #ef4444" data-color="#ef4444" title="Red"></button>
+                <button class="swatch" style="background: #f59e0b" data-color="#f59e0b" title="Orange"></button>
+                <button class="swatch" style="background: #8b5cf6" data-color="#8b5cf6" title="Purple"></button>
+                <button class="swatch" style="background: #ec4899" data-color="#ec4899" title="Pink"></button>
+                <button class="swatch" style="background: #14b8a6" data-color="#14b8a6" title="Teal"></button>
+                <button class="swatch" style="background: #f97316" data-color="#f97316" title="Amber"></button>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label">Paint Finish</label>
+              <div class="finish-options">
+                <button class="finish-btn active" data-finish="matte">
+                  <span class="finish-icon">◯</span>
+                  <span>Matte</span>
+                </button>
+                <button class="finish-btn" data-finish="satin">
+                  <span class="finish-icon">◐</span>
+                  <span>Satin</span>
+                </button>
+                <button class="finish-btn" data-finish="gloss">
+                  <span class="finish-icon">●</span>
+                  <span>Gloss</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label">Upload Room Photo</label>
+              <div class="upload-area" id="uploadArea">
+                <input type="file" id="roomUpload" accept="image/*" hidden>
+                <div class="upload-content">
+                  <span class="upload-icon">📸</span>
+                  <span class="upload-text">Click to upload or drag & drop</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="control-actions">
+              <button class="btn btn-primary" id="applyColors">Apply Colors</button>
+              <button class="btn btn-secondary" id="resetColors">Reset</button>
+            </div>
+          </div>
+
+          <div class="visualizer-preview">
+            <div class="preview-room" id="previewRoom">
+              <img id="roomImage" src="" alt="" style="display: none;">
+              <div class="paint-overlay" id="paintOverlay"></div>
+              <div class="room-elements">
+                <div class="room-floor"></div>
+                <div class="room-wall"></div>
+                <div class="room-trim"></div>
+                <div class="accent-strip" id="accentStrip"></div>
+              </div>
+            </div>
+            <p class="preview-tip">💡 Tip: Upload a photo of your room for the most accurate preview</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Calculator & Booking -->
+    <section id="calculator" class="section calculator-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-tag">Instant Estimate</span>
+          <h2 class="section-title">Free Consultation & Quote</h2>
+          <p class="section-subtitle">Get your estimate and book your free consultation</p>
+        </div>
+
+        <div class="calculator-booking-grid" data-aos="fade-up" data-aos-delay="100">
+          <!-- Multi-Step Calculator -->
+          <div class="calculator-card">
+            <h3 class="card-title">Paint Calculator</h3>
+            <div class="calculator-steps">
+              <div class="step active" data-step="1">
+                <div class="step-indicator">
+                  <span class="step-number">1</span>
+                  <span class="step-label">Room Type</span>
+                </div>
+              </div>
+              <div class="step-line"></div>
+              <div class="step" data-step="2">
+                <div class="step-indicator">
+                  <span class="step-number">2</span>
+                  <span class="step-label">Dimensions</span>
+                </div>
+              </div>
+              <div class="step-line"></div>
+              <div class="step" data-step="3">
+                <div class="step-indicator">
+                  <span class="step-number">3</span>
+                  <span class="step-label">Details</span>
+                </div>
+              </div>
+            </div>
+
+            <form id="calculatorForm" class="calculator-form">
+              <!-- Step 1: Room Type -->
+              <div class="form-step active" data-form-step="1">
+                <label class="form-label">Select Room Type</label>
+                <div class="room-types">
+                  <button type="button" class="room-type-btn" data-room="bedroom">
+                    <span class="room-icon">🛏️</span>
+                    <span>Bedroom</span>
+                  </button>
+                  <button type="button" class="room-type-btn" data-room="living">
+                    <span class="room-icon">🛋️</span>
+                    <span>Living Room</span>
+                  </button>
+                  <button type="button" class="room-type-btn" data-room="kitchen">
+                    <span class="room-icon">🍳</span>
+                    <span>Kitchen</span>
+                  </button>
+                  <button type="button" class="room-type-btn" data-room="bathroom">
+                    <span class="room-icon">🚿</span>
+                    <span>Bathroom</span>
+                  </button>
+                  <button type="button" class="room-type-btn" data-room="office">
+                    <span class="room-icon">💼</span>
+                    <span>Office</span>
+                  </button>
+                  <button type="button" class="room-type-btn" data-room="other">
+                    <span class="room-icon">🏠</span>
+                    <span>Other</span>
+                  </button>
+                </div>
+                <button type="button" class="btn btn-primary btn-block" id="step1Next" disabled>Next Step</button>
+              </div>
+
+              <!-- Step 2: Dimensions -->
+              <div class="form-step" data-form-step="2">
+                <div class="form-group">
+                  <label class="form-label">Number of Rooms</label>
+                  <input type="number" id="numRooms" min="1" value="1" class="form-input">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Average Room Size (m²)</label>
+                  <input type="number" id="roomSize" min="5" value="20" class="form-input">
+                  <small class="form-hint">Typical bedroom: 15-20 m², Living room: 25-35 m²</small>
+                </div>
+
+                <div class="form-actions">
+                  <button type="button" class="btn btn-secondary" id="step2Prev">Previous</button>
+                  <button type="button" class="btn btn-primary" id="step2Next">Next Step</button>
+                </div>
+              </div>
+
+              <!-- Step 3: Details -->
+              <div class="form-step" data-form-step="3">
+                <div class="form-group">
+                  <label class="form-label">Paint Quality</label>
+                  <select id="paintQuality" class="form-select">
+                    <option value="standard">Standard</option>
+                    <option value="premium">Premium (+20%)</option>
+                    <option value="luxury">Luxury (+40%)</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Number of Coats</label>
+                  <div class="radio-group">
+                    <label class="radio-label">
+                      <input type="radio" name="coats" value="1">
+                      <span>1 Coat</span>
+                    </label>
+                    <label class="radio-label">
+                      <input type="radio" name="coats" value="2" checked>
+                      <span>2 Coats (Recommended)</span>
+                    </label>
+                    <label class="radio-label">
+                      <input type="radio" name="coats" value="3">
+                      <span>3 Coats</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="form-actions">
+                  <button type="button" class="btn btn-secondary" id="step3Prev">Previous</button>
+                  <button type="button" class="btn btn-primary" id="calculateBtn">Calculate</button>
+                </div>
+              </div>
+            </form>
+
+            <div id="estimateResult" class="estimate-result" style="display: none;">
+              <div class="result-header">
+                <h4>Your Estimate</h4>
+                <button class="btn-icon" id="resetCalculator">↻</button>
+              </div>
+              <div class="result-amount">
+                <span class="currency">$</span>
+                <span id="estimateAmount">0</span>
+              </div>
+              <p class="result-note">This is an approximate estimate. Final price may vary based on site inspection.</p>
+              <button class="btn btn-primary btn-block" id="bookFromEstimate">Book Free Consultation</button>
+            </div>
+          </div>
+
+          <!-- Booking Form -->
+          <div class="booking-card">
+            <h3 class="card-title">Let's Paint Your Dream Space</h3>
+            <p class="text-gray-600 mb-6">Contact us today for a free consultation and transparent quote</p>
+            <form id="bookingForm" class="booking-form">
+              <div class="form-group">
+                <label class="form-label">Full Name *</label>
+                <input type="text" name="name" class="form-input" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Email Address *</label>
+                <input type="email" name="email" class="form-input" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Phone Number *</label>
+                <input type="tel" name="phone" class="form-input" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Preferred Date</label>
+                <input type="date" name="date" class="form-input">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Project Details</label>
+                <textarea name="message" rows="4" class="form-textarea" placeholder="Tell us about your project..."></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block">
+                Request Consultation
+              </button>
+
+              <div id="bookingStatus" class="form-status"></div>
+            </form>
+
+            <div class="contact-options">
+              <p class="or-divider"><span>or reach us directly</span></p>
+              <a href="https://wa.me/966XXXXXXXXX" class="contact-btn whatsapp-btn" target="_blank" rel="noopener">
+                <span class="btn-icon">💬</span>
+                <span>WhatsApp: +966-XXX-XXXXXXX</span>
+              </a>
+              <a href="tel:+966XXXXXXXXX" class="contact-btn phone-btn">
+                <span class="btn-icon">📞</span>
+                <span>Call: +966-XXX-XXXXXXX</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="section reviews-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-tag">Testimonials</span>
+          <h2 class="section-title">What Our Clients Say</h2>
+          <p class="section-subtitle">5-star rated service with hundreds of happy customers</p>
+        </div>
+
+        <!-- Review Stats -->
+        <div class="review-stats" data-aos="fade-up" data-aos-delay="100">
+          <div class="stat-large">
+            <div class="stat-value">4.9</div>
+            <div class="stat-stars">
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+              <span class="star filled">★</span>
+            </div>
+            <div class="stat-label">Average Rating</div>
+          </div>
+          <div class="stat-bars">
+            <div class="rating-bar">
+              <span class="bar-label">5 ★</span>
+              <div class="bar-track"><div class="bar-fill" style="width: 87%"></div></div>
+              <span class="bar-value">87%</span>
+            </div>
+            <div class="rating-bar">
+              <span class="bar-label">4 ★</span>
+              <div class="bar-track"><div class="bar-fill" style="width: 10%"></div></div>
+              <span class="bar-value">10%</span>
+            </div>
+            <div class="rating-bar">
+              <span class="bar-label">3 ★</span>
+              <div class="bar-track"><div class="bar-fill" style="width: 2%"></div></div>
+              <span class="bar-value">2%</span>
+            </div>
+            <div class="rating-bar">
+              <span class="bar-label">2 ★</span>
+              <div class="bar-track"><div class="bar-fill" style="width: 1%"></div></div>
+              <span class="bar-value">1%</span>
+            </div>
+            <div class="rating-bar">
+              <span class="bar-label">1 ★</span>
+              <div class="bar-track"><div class="bar-fill" style="width: 0%"></div></div>
+              <span class="bar-value">0%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reviews Slider -->
+        <div class="reviews-slider" data-aos="fade-up" data-aos-delay="200">
+          <div class="reviews-track" id="reviewsTrack">
+            <div class="review-card">
+              <div class="review-header">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" alt="Sarah Johnson" class="review-avatar">
+                <div class="review-author">
+                  <h4>Sarah Johnson</h4>
+                  <p>Villa Owner, Riyadh</p>
+                </div>
+                <div class="review-rating">
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                </div>
+              </div>
+              <p class="review-text">"Absolutely outstanding work! The team was professional, punctual, and the attention to detail was incredible. My living room looks like something out of a magazine. Highly recommend!"</p>
+              <div class="review-date">2 weeks ago</div>
+            </div>
+
+            <div class="review-card">
+              <div class="review-header">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="Michael Chen" class="review-avatar">
+                <div class="review-author">
+                  <h4>Michael Chen</h4>
+                  <p>Business Owner, Riyadh</p>
+                </div>
+                <div class="review-rating">
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                </div>
+              </div>
+              <p class="review-text">"We needed our office painted over the weekend, and they delivered perfectly. No disruption to our business, and the quality is exceptional. The color consultation was invaluable."</p>
+              <div class="review-date">1 month ago</div>
+            </div>
+
+            <div class="review-card">
+              <div class="review-header">
+                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop" alt="Emily Rodriguez" class="review-avatar">
+                <div class="review-author">
+                  <h4>Emily Rodriguez</h4>
+                  <p>Interior Designer</p>
+                </div>
+                <div class="review-rating">
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                </div>
+              </div>
+              <p class="review-text">"As a designer, I work with many painting contractors. This team stands out for their precision and ability to execute complex color schemes flawlessly. My clients are always thrilled."</p>
+              <div class="review-date">3 weeks ago</div>
+            </div>
+
+            <div class="review-card">
+              <div class="review-header">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop" alt="David Thompson" class="review-avatar">
+                <div class="review-author">
+                  <h4>David Thompson</h4>
+                  <p>Restaurant Owner</p>
+                </div>
+                <div class="review-rating">
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                  <span class="star filled">★</span>
+                </div>
+              </div>
+              <p class="review-text">"The custom mural they created for our restaurant is absolutely stunning. It has become a focal point that customers photograph constantly. True artists and professionals."</p>
+              <div class="review-date">1 week ago</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trust Badges -->
+        <div class="trust-badges" data-aos="fade-up" data-aos-delay="300">
+          <div class="badge-item">
+            <div class="badge-icon">🏆</div>
+            <div class="badge-text">Best of 2024</div>
+          </div>
+          <div class="badge-item">
+            <div class="badge-icon">✓</div>
+            <div class="badge-text">Licensed & Insured</div>
+          </div>
+          <div class="badge-item">
+            <div class="badge-icon">🌟</div>
+            <div class="badge-text">5-Star Rated</div>
+          </div>
+          <div class="badge-item">
+            <div class="badge-icon">🛡️</div>
+            <div class="badge-text">5-Year Warranty</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section faq-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-tag">FAQ</span>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-subtitle">Everything you need to know about our painting services</p>
+        </div>
+
+        <div class="faq-container" data-aos="fade-up" data-aos-delay="100">
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How long does a typical painting project take?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Most interior rooms take 1-2 days, while whole-house projects typically require 3-7 days. Exterior painting depends on home size but usually takes 3-5 days. We provide detailed timelines during consultation.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Do you provide color consultation services?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Yes! We offer complimentary color consultation with every project. Our experts help you choose the perfect colors that match your style, lighting, and existing decor. We also provide digital visualization so you can see colors before we paint.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>What brands of paint do you use?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>We work with premium brands including Sherwin-Williams, Benjamin Moore, and Behr. We select the best paint for each project based on surface type, location, and your budget. All our paints are low-VOC and environmentally friendly.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Do I need to move furniture before you arrive?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>No need! Our team carefully moves and protects all furniture and belongings. We cover everything with drop cloths and ensure your space is clean and organized at the end of each day.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>What is your warranty policy?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>We offer a comprehensive warranty: 1 year on standard projects, 3 years on premium, and 5 years on deluxe packages. This covers any defects in workmanship. We also provide complimentary touch-up service for the first year.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Can you work on weekends or after hours?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Absolutely! We offer flexible scheduling including evenings and weekends. For commercial clients, we specialize in after-hours and weekend work to minimize business disruption.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <span class="section-tag">Get In Touch</span>
+          <h2 class="section-title">Ready to Transform Your Space?</h2>
+          <p class="section-subtitle">Contact us today for a free consultation and quote</p>
+        </div>
+
+        <div class="contact-grid" data-aos="fade-up" data-aos-delay="100">
+          <div class="contact-info">
+            <h3>Contact Information</h3>
+            <p class="contact-description">Reach out to Riyadh Royal Painting — we're here to bring your vision to life with professional care.</p>
+            <div class="contact-methods">
+              <div class="contact-method">
+                <div class="method-icon">📧</div>
+                <div class="method-content">
+                  <h4>Email</h4>
+                  <a href="mailto:info@riyadhroyalpainting.com">info@riyadhroyalpainting.com</a>
+                </div>
+              </div>
+
+              <div class="contact-method">
+                <div class="method-icon">📞</div>
+                <div class="method-content">
+                  <h4>Phone</h4>
+                  <a href="tel:+966XXXXXXXXX">+966-XXX-XXXXXXX</a>
+                </div>
+              </div>
+
+              <div class="contact-method">
+                <div class="method-icon">📍</div>
+                <div class="method-content">
+                  <h4>Location</h4>
+                  <p>Riyadh, Saudi Arabia</p>
+                </div>
+              </div>
+
+              <div class="contact-method">
+                <div class="method-icon">🕐</div>
+                <div class="method-content">
+                  <h4>Hours</h4>
+                  <p>Sunday – Thursday<br>9:00 AM – 6:00 PM<br>Friday & Saturday: Closed</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="newsletter">
+              <h4>Subscribe to Our Newsletter</h4>
+              <p>Get painting tips, color trends, and exclusive offers</p>
+              <form id="newsletterForm" class="newsletter-form">
+                <input type="email" placeholder="Your email address" class="newsletter-input" required>
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+              </form>
+              <div id="newsletterStatus" class="form-status"></div>
+            </div>
+          </div>
+
+          <form id="contactForm" class="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">First Name *</label>
+                <input type="text" name="firstName" class="form-input" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Last Name *</label>
+                <input type="text" name="lastName" class="form-input" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Email *</label>
+                <input type="email" name="email" class="form-input" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Phone *</label>
+                <input type="tel" name="phone" class="form-input" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Service Type</label>
+              <select name="service" class="form-select">
+                <option value="">Select a service</option>
+                <option value="interior">Interior Painting</option>
+                <option value="exterior">Exterior Painting</option>
+                <option value="commercial">Commercial</option>
+                <option value="cabinet">Cabinet Refinishing</option>
+                <option value="specialty">Specialty/Custom</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Project Details</label>
+              <textarea name="message" rows="5" class="form-textarea" placeholder="Tell us about your project, timeline, and any specific requirements..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block btn-large">
+              Send Message
+              <span class="btn-icon">→</span>
+            </button>
+
+            <div id="contactStatus" class="form-status"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="#home" class="brand">
+            <span class="brand-icon">👑</span>
+            <span class="brand-text">Riyadh Royal Painting</span>
+          </a>
+          <p class="footer-description">At Riyadh Royal Painting, we believe painting is more than just applying color — it's about creating spaces that inspire and last. Professional painting services across Riyadh.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Facebook">📘</a>
+            <a href="#" class="social-link" aria-label="Instagram">📷</a>
+            <a href="#" class="social-link" aria-label="Twitter">🐦</a>
+            <a href="#" class="social-link" aria-label="LinkedIn">💼</a>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4>Services</h4>
+            <ul>
+              <li><a href="#services">Interior Painting</a></li>
+              <li><a href="#services">Exterior Painting</a></li>
+              <li><a href="#services">Commercial</a></li>
+              <li><a href="#services">Specialty Finishes</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#projects">Portfolio</a></li>
+              <li><a href="#reviews">Reviews</a></li>
+              <li><a href="#calculator">Get Estimate</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="#visualizer">Color Visualizer</a></li>
+              <li><a href="#gallery">Gallery</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">FAQs</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 Riyadh Royal Painting. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <span>•</span>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+
+      <div class="copyright-bar">
+        <p>© 2025 Riyadh Royal Painting – All Rights Reserved | Designed with Passion in Riyadh</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Action Buttons -->
+  <div class="floating-actions">
+    <a href="https://wa.me/966XXXXXXXXX" class="fab whatsapp-fab" target="_blank" rel="noopener" aria-label="WhatsApp">
+      💬
+    </a>
+    <a href="tel:+966XXXXXXXXX" class="fab phone-fab" aria-label="Call">
+      📞
+    </a>
+    <button class="fab scroll-top-fab" id="scrollTop" aria-label="Scroll to top">
+      ↑
+    </button>
+  </div>
+
+  <!-- Social Proof Notification -->
+  <div class="notification" id="socialProof" style="display: none;">
+    <div class="notification-content">
+      <div class="notification-avatar">👤</div>
+      <div class="notification-text">
+        <strong id="notificationName">Sarah M.</strong> just booked a consultation
+        <span class="notification-time">2 minutes ago</span>
+      </div>
+    </div>
+    <button class="notification-close">×</button>
+  </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" style="display: none;">
+    <button class="lightbox-close" aria-label="Close">×</button>
+    <img src="" alt="" class="lightbox-image">
+  </div>
+
   <script type="module" src="./main.js"></script>
 </body>
 </html>
