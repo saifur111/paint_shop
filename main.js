@@ -1,424 +1,640 @@
-const app = document.querySelector('#app');
+// Initialize AOS (Animate On Scroll)
+function initAOS() {
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
 
-const images = [
-  'https://images.pexels.com/photos/1669754/pexels-photo-1669754.jpeg?auto=compress&cs=tinysrgb&w=800',
-  'https://images.pexels.com/photos/1669799/pexels-photo-1669799.jpeg?auto=compress&cs=tinysrgb&w=800',
-  'https://images.pexels.com/photos/1440387/pexels-photo-1440387.jpeg?auto=compress&cs=tinysrgb&w=800',
-  'https://images.pexels.com/photos/271816/pexels-photo-271816.jpeg?auto=compress&cs=tinysrgb&w=800',
-  'https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=800',
-  'https://images.pexels.com/photos/1669790/pexels-photo-1669790.jpeg?auto=compress&cs=tinysrgb&w=800',
-  'https://images.pexels.com/photos/1396132/pexels-photo-1396132.jpeg?auto=compress&cs=tinysrgb&w=800',
-  'https://images.pexels.com/photos/1571459/pexels-photo-1571459.jpeg?auto=compress&cs=tinysrgb&w=800',
-  'https://images.pexels.com/photos/1669791/pexels-photo-1669791.jpeg?auto=compress&cs=tinysrgb&w=800'
-];
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('aos-animate');
+      }
+    });
+  }, observerOptions);
 
-const colorPalettes = [
-  { name: 'Ocean Breeze', colors: ['#0A2463', '#3E92CC', '#D8315B', '#1E1B18'] },
-  { name: 'Sunset Glow', colors: ['#F08A4B', '#F4442E', '#BE3144', '#872341'] },
-  { name: 'Forest Dawn', colors: ['#1B4332', '#2D6A4F', '#52B788', '#95D5B2'] },
-  { name: 'Royal Elegance', colors: ['#22223B', '#4A4E69', '#9A8C98', '#C9ADA7'] },
-  { name: 'Modern Neutral', colors: ['#2B2D42', '#8D99AE', '#EDF2F4', '#EF233C'] },
-  { name: 'Warm Earth', colors: ['#8B4513', '#CD853F', '#DEB887', '#F5DEB3'] }
-];
-
-const services = [
-  {
-    icon: '🎨',
-    title: 'Interior Painting',
-    description: 'Transform your living spaces with vibrant colors and flawless finishes that reflect your style and personality.'
-  },
-  {
-    icon: '🏠',
-    title: 'Exterior Painting',
-    description: 'Protect and beautify your property with weather-resistant, long-lasting exterior paint solutions.'
-  },
-  {
-    icon: '🏢',
-    title: 'Commercial Projects',
-    description: 'Professional painting services for offices, retail spaces, and commercial buildings with minimal disruption.'
-  },
-  {
-    icon: '✨',
-    title: 'Custom Designs',
-    description: 'Bring your creative visions to life with custom murals, patterns, and decorative painting techniques.'
-  },
-  {
-    icon: '🔧',
-    title: 'Surface Preparation',
-    description: 'Expert surface preparation including repairs, priming, and treatment for optimal paint adhesion.'
-  },
-  {
-    icon: '🎭',
-    title: 'Texture & Finishes',
-    description: 'Specialized textured finishes and decorative techniques to add depth and character to your walls.'
-  }
-];
-
-const testimonials = [
-  {
-    name: 'Sarah Mitchell',
-    role: 'Homeowner',
-    text: 'ColorCraft transformed our home completely! The attention to detail and professionalism exceeded our expectations. Highly recommended!',
-    initial: 'S'
-  },
-  {
-    name: 'Ahmed Rahman',
-    role: 'Business Owner',
-    text: 'They painted our entire office space over the weekend. Zero disruption to our business and the results are stunning. True professionals!',
-    initial: 'A'
-  },
-  {
-    name: 'Linda Chen',
-    role: 'Interior Designer',
-    text: 'I work with ColorCraft on all my projects. Their color expertise and flawless execution make them my go-to painting partner.',
-    initial: 'L'
-  }
-];
-
-function renderApp() {
-  app.innerHTML = `
-    <nav class="navbar">
-      <div class="nav-container">
-        <div class="logo">ColorCraft</div>
-        <ul class="nav-menu">
-          <li><a href="#home" class="nav-link">Home</a></li>
-          <li><a href="#services" class="nav-link">Services</a></li>
-          <li><a href="#gallery" class="nav-link">Gallery</a></li>
-          <li><a href="#colors" class="nav-link">Colors</a></li>
-          <li><a href="#testimonials" class="nav-link">Reviews</a></li>
-          <li><a href="#contact" class="nav-link">Contact</a></li>
-        </ul>
-        <button class="menu-toggle">☰</button>
-      </div>
-    </nav>
-
-    <section id="home" class="hero">
-      <div class="hero-background"></div>
-      <div class="hero-shapes">
-        <div class="shape"></div>
-        <div class="shape"></div>
-        <div class="shape"></div>
-      </div>
-      <div class="hero-content">
-        <h1 class="hero-title">Transform Your Space with Color</h1>
-        <p class="hero-subtitle">Professional painting services that bring your vision to life with precision, passion, and perfection</p>
-        <a href="#contact" class="btn">Get Free Consultation</a>
-      </div>
-    </section>
-
-    <section id="services" class="section">
-      <div class="container">
-        <h2 class="section-title fade-in">Our Services</h2>
-        <p class="section-subtitle fade-in">From residential to commercial projects, we offer comprehensive painting solutions tailored to your needs</p>
-        <div class="services-grid">
-          ${services.map((service, index) => `
-            <div class="service-card fade-in" style="animation-delay: ${index * 0.1}s">
-              <div class="service-icon">${service.icon}</div>
-              <h3 class="service-title">${service.title}</h3>
-              <p class="service-description">${service.description}</p>
-            </div>
-          `).join('')}
-        </div>
-      </div>
-    </section>
-
-    <section id="gallery" class="section" style="background: #fff;">
-      <div class="container">
-        <h2 class="section-title fade-in">Our Portfolio</h2>
-        <p class="section-subtitle fade-in">Explore our recent projects and see the quality craftsmanship we deliver</p>
-        <div class="gallery-grid">
-          ${images.map((img, index) => `
-            <div class="gallery-item fade-in" style="animation-delay: ${index * 0.1}s" data-index="${index}">
-              <img src="${img}" alt="Gallery Image ${index + 1}">
-              <div class="gallery-overlay">
-                <div class="gallery-icon">🔍</div>
-              </div>
-            </div>
-          `).join('')}
-        </div>
-      </div>
-    </section>
-
-    <section id="colors" class="section colors-section">
-      <div class="container">
-        <h2 class="section-title fade-in">Color Palettes</h2>
-        <p class="section-subtitle fade-in">Curated color combinations to inspire your next project</p>
-        <div class="color-palettes">
-          ${colorPalettes.map((palette, index) => `
-            <div class="palette-card fade-in" style="animation-delay: ${index * 0.1}s">
-              <div class="palette-colors">
-                ${palette.colors.map(color => `
-                  <div class="palette-color" style="background: ${color}" title="${color}"></div>
-                `).join('')}
-              </div>
-              <div class="palette-info">
-                <div class="palette-name">${palette.name}</div>
-              </div>
-            </div>
-          `).join('')}
-        </div>
-      </div>
-    </section>
-
-    <section id="testimonials" class="section">
-      <div class="container">
-        <h2 class="section-title fade-in">What Clients Say</h2>
-        <p class="section-subtitle fade-in">Real feedback from satisfied customers who trusted us with their spaces</p>
-        <div class="testimonials-grid">
-          ${testimonials.map((testimonial, index) => `
-            <div class="testimonial-card fade-in" style="animation-delay: ${index * 0.1}s">
-              <div class="quote-icon">"</div>
-              <p class="testimonial-text">${testimonial.text}</p>
-              <div class="testimonial-author">
-                <div class="author-avatar">${testimonial.initial}</div>
-                <div>
-                  <div class="author-name">${testimonial.name}</div>
-                  <div class="author-role">${testimonial.role}</div>
-                </div>
-              </div>
-            </div>
-          `).join('')}
-        </div>
-      </div>
-    </section>
-
-    <section id="about" class="section" style="background: #fff;">
-      <div class="container">
-        <h2 class="section-title fade-in">About ColorCraft</h2>
-        <div class="about-content fade-in">
-          <p class="about-text">
-            With over a decade of experience, ColorCraft has been transforming homes and businesses across the region.
-            Our team of skilled painters combines technical expertise with artistic vision to deliver exceptional results
-            that exceed expectations. We use premium quality paints and eco-friendly materials to ensure lasting beauty
-            and durability.
-          </p>
-          <div class="stats-grid">
-            <div class="stat-card">
-              <div class="stat-number">2500+</div>
-              <div class="stat-label">Projects Completed</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-number">12+</div>
-              <div class="stat-label">Years Experience</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-number">98%</div>
-              <div class="stat-label">Client Satisfaction</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-number">50+</div>
-              <div class="stat-label">Expert Painters</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="section contact-section">
-      <div class="container">
-        <div class="contact-container">
-          <div class="contact-info fade-in">
-            <h2>Let's Start Your Project</h2>
-            <p>Ready to transform your space? Get in touch with us today for a free consultation and quote.</p>
-            <div class="contact-details">
-              <div class="contact-item">
-                <div class="contact-icon">📍</div>
-                <div>
-                  <div style="font-weight: 600;">Visit Us</div>
-                  <div style="opacity: 0.9;">123 Paint Street, Color City, CC 12345</div>
-                </div>
-              </div>
-              <div class="contact-item">
-                <div class="contact-icon">📞</div>
-                <div>
-                  <div style="font-weight: 600;">Call Us</div>
-                  <div style="opacity: 0.9;">+880 151 5666 904</div>
-                </div>
-              </div>
-              <div class="contact-item">
-                <div class="contact-icon">✉️</div>
-                <div>
-                  <div style="font-weight: 600;">Email Us</div>
-                  <div style="opacity: 0.9;">info@colorcraft.com</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <form class="contact-form fade-in" id="contactForm">
-            <div class="form-group">
-              <label class="form-label">Your Name</label>
-              <input type="text" class="form-input" name="name" required placeholder="John Doe">
-            </div>
-            <div class="form-group">
-              <label class="form-label">Email Address</label>
-              <input type="email" class="form-input" name="email" required placeholder="john@example.com">
-            </div>
-            <div class="form-group">
-              <label class="form-label">Phone Number</label>
-              <input type="tel" class="form-input" name="phone" placeholder="+880 1234 567890">
-            </div>
-            <div class="form-group">
-              <label class="form-label">Your Message</label>
-              <textarea class="form-textarea" name="message" required placeholder="Tell us about your project..."></textarea>
-            </div>
-            <button type="submit" class="btn-submit">Send Message</button>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3>ColorCraft</h3>
-          <p>Transforming spaces with professional painting services since 2013. Quality, reliability, and customer satisfaction guaranteed.</p>
-        </div>
-        <div class="footer-section">
-          <h3>Quick Links</h3>
-          <ul class="footer-links">
-            <li><a href="#services">Services</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#colors">Color Palettes</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h3>Services</h3>
-          <ul class="footer-links">
-            <li><a href="#services">Interior Painting</a></li>
-            <li><a href="#services">Exterior Painting</a></li>
-            <li><a href="#services">Commercial Projects</a></li>
-            <li><a href="#services">Custom Designs</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h3>Contact</h3>
-          <ul class="footer-links">
-            <li>123 Paint Street</li>
-            <li>Color City, CC 12345</li>
-            <li>Phone: +880 151 5666 904</li>
-            <li>Email: info@colorcraft.com</li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 ColorCraft Painting Shop. All rights reserved.</p>
-      </div>
-    </footer>
-
-    <a href="https://wa.me/8801515666904" target="_blank" class="whatsapp-float" title="Chat on WhatsApp">
-      💬
-    </a>
-
-    <div class="scroll-top" id="scrollTop">↑</div>
-  `;
+  document.querySelectorAll('[data-aos]').forEach(el => {
+    observer.observe(el);
+  });
 }
 
-function initializeEventListeners() {
-  const menuToggle = document.querySelector('.menu-toggle');
-  const navMenu = document.querySelector('.nav-menu');
-  const navLinks = document.querySelectorAll('.nav-link');
-  const scrollTopBtn = document.querySelector('#scrollTop');
-  const contactForm = document.querySelector('#contactForm');
-  const navbar = document.querySelector('.navbar');
+// Preloader
+function hidePreloader() {
+  const preloader = document.getElementById('preloader');
+  setTimeout(() => {
+    preloader.classList.add('hide');
+    setTimeout(() => {
+      preloader.remove();
+    }, 500);
+  }, 1000);
+}
 
-  menuToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-  });
+// Scroll Progress Bar
+function updateScrollProgress() {
+  const scrollProgress = document.getElementById('scrollProgress');
+  const winScroll = document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = (winScroll / height) * 100;
+  scrollProgress.style.width = scrolled + '%';
+}
 
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      navMenu.classList.remove('active');
-    });
-  });
-
+// Navigation
+function initNavigation() {
+  const navbar = document.getElementById('navbar');
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  // Scroll effect
   window.addEventListener('scroll', () => {
     if (window.scrollY > 100) {
       navbar.classList.add('scrolled');
-      scrollTopBtn.classList.add('visible');
     } else {
       navbar.classList.remove('scrolled');
-      scrollTopBtn.classList.remove('visible');
     }
-
-    const fadeElements = document.querySelectorAll('.fade-in');
-    fadeElements.forEach(element => {
-      const elementTop = element.getBoundingClientRect().top;
-      const windowHeight = window.innerHeight;
-      if (elementTop < windowHeight - 100) {
-        element.classList.add('visible');
-      }
-    });
   });
-
-  scrollTopBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Mobile menu toggle
+  menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('active');
+    navLinks.classList.toggle('active');
   });
-
-  contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const formData = new FormData(contactForm);
-    const data = Object.fromEntries(formData);
-
-    alert(`Thank you ${data.name}! We've received your message and will contact you soon at ${data.email}`);
-    contactForm.reset();
-  });
-
-  const galleryItems = document.querySelectorAll('.gallery-item');
-  galleryItems.forEach(item => {
-    item.addEventListener('click', () => {
-      const img = item.querySelector('img');
-      const modal = document.createElement('div');
-      modal.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0,0,0,0.9);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 9999;
-        cursor: pointer;
-        padding: 2rem;
-      `;
-
-      const modalImg = document.createElement('img');
-      modalImg.src = img.src;
-      modalImg.style.cssText = `
-        max-width: 90%;
-        max-height: 90%;
-        border-radius: 10px;
-        box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-      `;
-
-      modal.appendChild(modalImg);
-      document.body.appendChild(modal);
-
-      modal.addEventListener('click', () => {
-        modal.remove();
-      });
-    });
-  });
-
-  const paletteCards = document.querySelectorAll('.palette-card');
-  paletteCards.forEach(card => {
-    card.addEventListener('click', () => {
-      const colors = Array.from(card.querySelectorAll('.palette-color')).map(el => el.style.background);
-      alert(`Color codes:\n${colors.join('\n')}`);
+  // Close mobile menu on link click
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      menuToggle.classList.remove('active');
+      navLinks.classList.remove('active');
     });
   });
 }
 
-renderApp();
-initializeEventListeners();
-
-window.addEventListener('load', () => {
-  const fadeElements = document.querySelectorAll('.fade-in');
-  fadeElements.forEach((element, index) => {
-    setTimeout(() => {
-      element.classList.add('visible');
-    }, index * 100);
+// Theme Toggle
+function initThemeToggle() {
+  const themeToggle = document.getElementById('themeToggle');
+  const themeIcon = themeToggle.querySelector('.theme-icon');
+  const currentTheme = localStorage.getItem('theme') || 'light';
+  document.documentElement.setAttribute('data-theme', currentTheme);
+  themeIcon.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+  themeToggle.addEventListener('click', () => {
+    const theme = document.documentElement.getAttribute('data-theme');
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
   });
+}
+
+// Animated Counter
+function animateCounter(element, target, duration = 2000) {
+  const start = 0;
+  const increment = target / (duration / 16);
+  let current = start;
+  const timer = setInterval(() => {
+    current += increment;
+    if (current >= target) {
+      element.textContent = target;
+      clearInterval(timer);
+    } else {
+      element.textContent = Math.floor(current);
+    }
+  }, 16);
+}
+
+// Hero Stats Counter
+function initStatsCounter() {
+  const statNumbers = document.querySelectorAll('.stat-number');
+  let hasAnimated = false;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !hasAnimated) {
+        hasAnimated = true;
+        statNumbers.forEach(stat => {
+          const target = parseInt(stat.getAttribute('data-count'));
+          animateCounter(stat, target);
+        });
+      }
+    });
+  });
+  const heroStats = document.querySelector('.hero-stats');
+  if (heroStats) {
+    observer.observe(heroStats);
+  }
+}
+
+// Service Tabs
+function initServiceTabs() {
+  const tabs = document.querySelectorAll('.service-tab');
+  const panels = document.querySelectorAll('.service-panel');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.getAttribute('data-tab');
+      tabs.forEach(t => t.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelector(`[data-panel="${target}"]`).classList.add('active');
+    });
+  });
+}
+
+// Projects Carousel
+function initProjectsCarousel() {
+  const track = document.getElementById('projectsTrack');
+  const prevBtn = document.getElementById('projectPrev');
+  const nextBtn = document.getElementById('projectNext');
+  const slides = track.querySelectorAll('.project-slide');
+  let currentIndex = 0;
+  const slideWidth = 100;
+  function updateCarousel() {
+    track.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+  }
+  nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % slides.length;
+    updateCarousel();
+  });
+  prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    updateCarousel();
+  });
+  // Auto-play
+  let autoplay = setInterval(() => {
+    currentIndex = (currentIndex + 1) % slides.length;
+    updateCarousel();
+  }, 5000);
+  // Pause on hover
+  track.addEventListener('mouseenter', () => clearInterval(autoplay));
+  track.addEventListener('mouseleave', () => {
+    autoplay = setInterval(() => {
+      currentIndex = (currentIndex + 1) % slides.length;
+      updateCarousel();
+    }, 5000);
+  });
+}
+
+// Gallery Filters
+function initGalleryFilters() {
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.getAttribute('data-filter');
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      galleryItems.forEach(item => {
+        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+          item.style.display = 'block';
+          setTimeout(() => {
+            item.style.opacity = '1';
+            item.style.transform = 'scale(1)';
+          }, 10);
+        } else {
+          item.style.opacity = '0';
+          item.style.transform = 'scale(0.8)';
+          setTimeout(() => {
+            item.style.display = 'none';
+          }, 300);
+        }
+      });
+    });
+  });
+}
+
+// Before/After Tabs
+function initBATabs() {
+  const tabs = document.querySelectorAll('.ba-tab');
+  const comparisons = document.querySelectorAll('.ba-comparison');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.getAttribute('data-ba');
+      tabs.forEach(t => t.classList.remove('active'));
+      comparisons.forEach(c => c.classList.remove('active'));
+      tab.classList.add('active');
+      document.querySelector(`[data-ba-content="${target}"]`).classList.add('active');
+      // Reinitialize the active slider
+      initBeforeAfterSlider(`baSlider${target}`);
+    });
+  });
+  // Initialize first slider
+  initBeforeAfterSlider('baSlider1');
+}
+
+// Before/After Slider
+function initBeforeAfterSlider(sliderId) {
+  const container = document.getElementById(sliderId);
+  if (!container) return;
+  const beforeDiv = container.querySelector('.ba-before');
+  const handle = container.querySelector('.ba-handle');
+  let isDragging = false;
+  function setPosition(percentage) {
+    percentage = Math.max(0, Math.min(100, percentage));
+    beforeDiv.style.width = percentage + '%';
+    handle.style.left = percentage + '%';
+    handle.setAttribute('aria-valuenow', Math.round(percentage));
+  }
+  function getPercentage(clientX) {
+    const rect = container.getBoundingClientRect();
+    return ((clientX - rect.left) / rect.width) * 100;
+  }
+  // Mouse events
+  handle.addEventListener('mousedown', () => isDragging = true);
+  document.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    setPosition(getPercentage(e.clientX));
+  });
+  document.addEventListener('mouseup', () => isDragging = false);
+  // Touch events
+  handle.addEventListener('touchstart', () => isDragging = true);
+  document.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    setPosition(getPercentage(e.touches[0].clientX));
+  });
+  document.addEventListener('touchend', () => isDragging = false);
+  // Click on container
+  container.addEventListener('click', (e) => {
+    if (e.target === handle || handle.contains(e.target)) return;
+    setPosition(getPercentage(e.clientX));
+  });
+  // Keyboard navigation
+  handle.addEventListener('keydown', (e) => {
+    let current = parseFloat(handle.getAttribute('aria-valuenow'));
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      setPosition(current - 5);
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      setPosition(current + 5);
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      setPosition(0);
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      setPosition(100);
+    } else if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      setPosition(50);
+    }
+  });
+  setPosition(50);
+}
+
+// Lightbox
+function initLightbox() {
+  const lightbox = document.getElementById('lightbox');
+  const galleryItems = document.querySelectorAll('.gallery-item img');
+  galleryItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const lightboxImg = lightbox.querySelector('.lightbox-image');
+      lightboxImg.src = item.src;
+      lightboxImg.alt = item.alt;
+      lightbox.style.display = 'flex';
+    });
+  });
+  const closeBtn = lightbox.querySelector('.lightbox-close');
+  closeBtn.addEventListener('click', () => {
+    lightbox.style.display = 'none';
+  });
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      lightbox.style.display = 'none';
+    }
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox.style.display === 'flex') {
+      lightbox.style.display = 'none';
+    }
+  });
+}
+
+// Color Visualizer
+function initColorVisualizer() {
+  const wallColorInput = document.getElementById('wallColor');
+  const accentColorInput = document.getElementById('accentColor');
+  const wallColorValue = document.getElementById('wallColorValue');
+  const accentColorValue = document.getElementById('accentColorValue');
+  const applyBtn = document.getElementById('applyColors');
+  const resetBtn = document.getElementById('resetColors');
+  const roomUpload = document.getElementById('roomUpload');
+  const uploadArea = document.getElementById('uploadArea');
+  const roomImage = document.getElementById('roomImage');
+  const paintOverlay = document.getElementById('paintOverlay');
+  const accentStrip = document.getElementById('accentStrip');
+  const roomWall = document.querySelector('.room-wall');
+  const finishBtns = document.querySelectorAll('.finish-btn');
+  let currentFinish = 'matte';
+  // Color input updates
+  wallColorInput.addEventListener('input', () => {
+    wallColorValue.textContent = wallColorInput.value;
+  });
+  accentColorInput.addEventListener('input', () => {
+    accentColorValue.textContent = accentColorInput.value;
+  });
+  // Color swatches
+  document.querySelectorAll('.swatch').forEach(swatch => {
+    swatch.addEventListener('click', () => {
+      const color = swatch.getAttribute('data-color');
+      const parent = swatch.closest('.control-group');
+      if (parent.querySelector('#wallColor')) {
+        wallColorInput.value = color;
+        wallColorValue.textContent = color;
+      } else {
+        accentColorInput.value = color;
+        accentColorValue.textContent = color;
+      }
+    });
+  });
+  // Finish selection
+  finishBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      finishBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFinish = btn.getAttribute('data-finish');
+      applyColors();
+    });
+  });
+  // Apply colors
+  function applyColors() {
+    const wallColor = wallColorInput.value;
+    const accentColor = accentColorInput.value;
+    if (roomImage.src && roomImage.src !== window.location.href) {
+      roomImage.style.display = 'block';
+      paintOverlay.style.background = wallColor;
+      paintOverlay.style.mixBlendMode = 'multiply';
+    } else {
+      roomImage.style.display = 'none';
+      roomWall.style.background = wallColor;
+    }
+    accentStrip.style.background = accentColor;
+    // Apply finish effect
+    let filter = '';
+    if (currentFinish === 'satin') {
+      filter = 'brightness(1.1)';
+    } else if (currentFinish === 'gloss') {
+      filter = 'brightness(1.2) contrast(1.1)';
+    }
+    if (roomImage.style.display === 'block') {
+      paintOverlay.style.filter = filter;
+    } else {
+      roomWall.style.filter = filter;
+    }
+  }
+  applyBtn.addEventListener('click', applyColors);
+  // Reset
+  resetBtn.addEventListener('click', () => {
+    wallColorInput.value = '#f5f5f5';
+    accentColorInput.value = '#3b82f6';
+    wallColorValue.textContent = '#f5f5f5';
+    accentColorValue.textContent = '#3b82f6';
+    roomImage.src = '';
+    roomImage.style.display = 'none';
+    finishBtns.forEach(b => b.classList.remove('active'));
+    finishBtns[0].classList.add('active');
+    currentFinish = 'matte';
+    applyColors();
+  });
+  // File upload
+  uploadArea.addEventListener('click', () => {
+    roomUpload.click();
+  });
+  uploadArea.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    uploadArea.style.borderColor = 'var(--primary)';
+  });
+  uploadArea.addEventListener('dragleave', () => {
+    uploadArea.style.borderColor = 'var(--gray-300)';
+  });
+  uploadArea.addEventListener('drop', (e) => {
+    e.preventDefault();
+    uploadArea.style.borderColor = 'var(--gray-300)';
+    const file = e.dataTransfer.files[0];
+    if (file && file.type.startsWith('image/')) {
+      handleImageUpload(file);
+    }
+  });
+  roomUpload.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      handleImageUpload(file);
+    }
+  });
+  function handleImageUpload(file) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      roomImage.src = e.target.result;
+      applyColors();
+    };
+    reader.readAsDataURL(file);
+  }
+  // Initial application
+  applyColors();
+}
+
+// Multi-Step Calculator
+function initCalculator() {
+  const steps = document.querySelectorAll('.step');
+  const formSteps = document.querySelectorAll('.form-step');
+  const roomTypeBtns = document.querySelectorAll('.room-type-btn');
+  const step1Next = document.getElementById('step1Next');
+  const step2Prev = document.getElementById('step2Prev');
+  const step2Next = document.getElementById('step2Next');
+  const step3Prev = document.getElementById('step3Prev');
+  const calculateBtn = document.getElementById('calculateBtn');
+  const resetCalculator = document.getElementById('resetCalculator');
+  const estimateResult = document.getElementById('estimateResult');
+  const estimateAmount = document.getElementById('estimateAmount');
+  const calculatorForm = document.getElementById('calculatorForm');
+  let currentStep = 1;
+  let selectedRoom = null;
+  function showStep(step) {
+    steps.forEach(s => s.classList.remove('active'));
+    formSteps.forEach(s => s.classList.remove('active'));
+    steps[step - 1].classList.add('active');
+    document.querySelector(`[data-form-step="${step}"]`).classList.add('active');
+    currentStep = step;
+  }
+  // Room type selection
+  roomTypeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      roomTypeBtns.forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      selectedRoom = btn.getAttribute('data-room');
+      step1Next.disabled = false;
+    });
+  });
+  step1Next.addEventListener('click', () => showStep(2));
+  step2Prev.addEventListener('click', () => showStep(1));
+  step2Next.addEventListener('click', () => showStep(3));
+  step3Prev.addEventListener('click', () => showStep(2));
+  calculateBtn.addEventListener('click', () => {
+    const numRooms = parseInt(document.getElementById('numRooms').value);
+    const roomSize = parseFloat(document.getElementById('roomSize').value);
+    const paintQuality = document.getElementById('paintQuality').value;
+    const coats = parseInt(document.querySelector('input[name="coats"]:checked').value);
+    
+    let baseRate = 30; // Base rate per m² in SAR
+    
+    // Quality multiplier
+    if (paintQuality === 'premium') baseRate *= 1.2;
+    if (paintQuality === 'luxury') baseRate *= 1.4;
+    
+    // Calculate
+    const paintCost = numRooms * roomSize * coats * baseRate;
+    const laborCost = numRooms * 500; // Labor per room in SAR
+    const total = Math.round(paintCost + laborCost);
+    
+    // Display result
+    calculatorForm.style.display = 'none';
+    estimateResult.style.display = 'block';
+    
+    // Animate counter
+    const formattedTotal = total.toLocaleString('en-SA');
+    estimateAmount.dataset.total = total;
+    animateCounter(estimateAmount, total, 1500);
+  });
+  resetCalculator.addEventListener('click', () => {
+    calculatorForm.style.display = 'block';
+    estimateResult.style.display = 'none';
+    calculatorForm.reset();
+    roomTypeBtns.forEach(b => b.classList.remove('selected'));
+    step1Next.disabled = true;
+    showStep(1);
+  });
+  
+  // Book from estimate
+  document.getElementById('bookFromEstimate')?.addEventListener('click', () => {
+    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+  });
+}
+
+// Booking Form
+function initBookingForm() {
+  const bookingForm = document.getElementById('bookingForm');
+  const bookingStatus = document.getElementById('bookingStatus');
+  bookingForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(bookingForm);
+    const data = Object.fromEntries(formData);
+    // Simulate form submission
+    bookingStatus.textContent = 'Sending your request...';
+    bookingStatus.className = 'form-status';
+    bookingStatus.style.display = 'block';
+    setTimeout(() => {
+      bookingStatus.textContent = 'Thank you! We will contact you within 24 hours to schedule your free consultation.';
+      bookingStatus.className = 'form-status success';
+      bookingForm.reset();
+    }, 1500);
+  });
+}
+
+// Contact Form
+function initContactForm() {
+  const contactForm = document.getElementById('contactForm');
+  const contactStatus = document.getElementById('contactStatus');
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(contactForm);
+    const data = Object.fromEntries(formData);
+    contactStatus.textContent = 'Sending your message...';
+    contactStatus.className = 'form-status';
+    contactStatus.style.display = 'block';
+    setTimeout(() => {
+      contactStatus.textContent = 'Message sent successfully! We will respond within 24 hours.';
+      contactStatus.className = 'form-status success';
+      contactForm.reset();
+    }, 1500);
+  });
+}
+
+// Newsletter Form
+function initNewsletterForm() {
+  const newsletterForm = document.getElementById('newsletterForm');
+  const newsletterStatus = document.getElementById('newsletterStatus');
+  newsletterForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    newsletterStatus.textContent = 'Subscribing...';
+    newsletterStatus.className = 'form-status';
+    newsletterStatus.style.display = 'block';
+    setTimeout(() => {
+      newsletterStatus.textContent = 'Successfully subscribed! Check your email for a welcome message.';
+      newsletterStatus.className = 'form-status success';
+      newsletterForm.reset();
+    }, 1500);
+  });
+}
+
+// FAQ Accordion
+function initFAQ() {
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    question.addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
+      // Close all items
+      faqItems.forEach(i => i.classList.remove('active'));
+      // Open clicked item if it was not active
+      if (!isActive) {
+        item.classList.add('active');
+      }
+    });
+  });
+}
+
+// Social Proof Notifications
+function initSocialProof() {
+  const notification = document.getElementById('socialProof');
+  const names = ['Sarah M.', 'John D.', 'Emily R.', 'Michael C.', 'Jessica L.', 'David T.'];
+  function showNotification() {
+    const randomName = names[Math.floor(Math.random() * names.length)];
+    const nameElement = document.getElementById('notificationName');
+    nameElement.textContent = randomName;
+    notification.style.display = 'block';
+    setTimeout(() => {
+      notification.style.display = 'none';
+    }, 5000);
+  }
+  // Show first notification after 3 seconds
+  setTimeout(showNotification, 3000);
+  // Show notification every 15 seconds
+  setInterval(showNotification, 15000);
+  // Close button
+  notification.querySelector('.notification-close').addEventListener('click', () => {
+    notification.style.display = 'none';
+  });
+}
+
+// Scroll to Top
+function initScrollToTop() {
+  const scrollTopBtn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) {
+      scrollTopBtn.classList.add('visible');
+    } else {
+      scrollTopBtn.classList.remove('visible');
+    }
+  });
+  scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+}
+
+// Initialize all functions when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  hidePreloader();
+  initAOS();
+  initNavigation();
+  initThemeToggle();
+  initStatsCounter();
+  initServiceTabs();
+  initProjectsCarousel();
+  initGalleryFilters();
+  initBATabs();
+  initLightbox();
+  initColorVisualizer();
+  initCalculator();
+  initBookingForm();
+  initContactForm();
+  initNewsletterForm();
+  initFAQ();
+  initSocialProof();
+  initScrollToTop();
+  // Scroll progress
+  window.addEventListener('scroll', updateScrollProgress);
 });
